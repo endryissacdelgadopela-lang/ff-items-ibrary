@@ -1,44 +1,29 @@
-// --- BASE DE DATOS COMPLETA DE ARTÍCULOS ---
+// --- BASE DE DATOS FILTRADA Y LIMPIA ---
 const baseDeDatosRopa = [
     // 👀 CATEGORÍA: OJOS / ROSTRO
     { nombre: "Ojos de Compartir (Estilo Anime)", id: "201001", categoria: "ojos", descripcion: "Aspecto visual de ojos rojos luminosos inspirados en anime." },
     { nombre: "Pintura de Guerra Calavera", id: "201002", categoria: "ojos", descripcion: "Pintura facial de esqueleto que cubre los ojos y mejillas." },
     { nombre: "Ojos de Demonio Neón", id: "201003", categoria: "ojos", descripcion: "Efecto de ojos brillantes color cian, ideal para sets oscuros." },
 
-    // 🧑 CATEGORÍA: CABEZA
-    { nombre: "Gorra de Fuego (Veterana)", id: "101001", categoria: "cabeza", descripcion: "Gorra clásica de las primeras temporadas. Altamente cotizada por los veteranos." },
-    { nombre: "Cabello de Súper Saiyan", id: "101002", categoria: "cabeza", descripcion: "Pelo puntiagudo amarillo brillante inspirado en transformaciones legendarias." },
-
     // 🎭 CATEGORÍA: MÁSCARAS
     { nombre: "Máscara Sakura (Pase Élite S1)", id: "211000016", categoria: "mascara", descripcion: "Máscara oficial perteneciente al primer Pase Élite Sakura (Temporada 1). El icónico rostro Kabuki tradicional, máximo símbolo de veteranía." },
     { nombre: "Máscara Criminal", id: "211000004", categoria: "mascara", descripcion: "Máscara de payaso clásica de la colección Criminales. Diseñada para cubrir el rostro con un estilo imponente." },
-    { nombre: "Barba de Viejo (Antigua)", id: "102001", categoria: "mascara", descripcion: "Uno de los objetos más icónicos, divertidos y veteranos de todo el juego." },
 
     // 👕 CATEGORÍA: CHAQUETAS (TORSO)
     { nombre: "Chaqueta Sakura (Pase Élite S1)", id: "203000156", categoria: "chaqueta", descripcion: "Chaqueta oficial del primer Pase Élite Sakura (Temporada 1). Cuenta con el icónico diseño tradicional japonés y la calavera en la espalda." },
     { nombre: "Chaqueta Roja Especial", id: "203000055", categoria: "chaqueta", descripcion: "Chaqueta de diseño deportivo color rojo brillante. Edición especial de colección." },
-    { nombre: "Suéter de Cuello Alto Negro", id: "103003", categoria: "chaqueta", descripcion: "Prenda minimalista y elegante que combina de manera insana con cualquier pantalón." },
 
     // 👖 CATEGORÍA: PANTALONES (PIERNAS)
     { nombre: "Pantalones Sakura (Pase Élite S1)", id: "204000092", categoria: "pantalones", descripcion: "Pantalones oficiales pertenecientes al primer Pase Élite Sakura (Temporada 1). Diseño tradicional oriental." },
     { nombre: "Pantalones Heroico S2", id: "203000105", categoria: "pantalones", descripcion: "Pantalones exclusivos de rango Heroico de la Temporada 2. Un clásico de máxima veteranía con detalles en rojo y negro." },
-    { nombre: "Pantalones Angelicales Azul", id: "105012", categoria: "pantalones", descripcion: "El pantalón más codiciado del juego. Cuenta con detallados efectos de alas celestes flotantes." },
-
-    // 🤡 CATEGORÍA: CRIMINALES
-    { nombre: "Criminal Rojo", id: "106001", categoria: "criminales", descripcion: "Traje completo de la incubadora Criminales de color Rojo furioso." },
 
     // 🦖 CATEGORÍA: DINOS
     { nombre: "Dino 2D (Traje Plano)", id: "203033050", categoria: "dino", descripcion: "Skin exclusiva con aspecto plano y caricaturesco en dos dimensiones. Uno de los trajes más llamativos y únicos de la colección." },
-    { nombre: "Dino Verde Clásico", id: "107001", categoria: "dino", descripcion: "Mameluco completo con forma de dinosaurio verde, el dino original." },
 
-    // 🥋 CATEGORÍA: TRAJES COMPLETOS (SETS)
-    { nombre: "Pase Sakura Completo", id: "108001", categoria: "completo", descripcion: "Conjunto completo del legendario pase de batalla de la Temporada 1." },
-
-    // 🔫 CATEGORÍA: ARMAS
-    { nombre: "MP40 - Cobra Depredadora", id: "109002", categoria: "armas", descripcion: "Arma evolutiva con temática de cobra roja y animaciones exclusivas de recarga y muerte." },
-
-    // 🤛 CATEGORÍA: PUÑOS
-    { nombre: "Puños de Fuego", id: "110001", categoria: "puños", descripcion: "Efecto visual ardiente para los puños del personaje durante la batalla." }
+    // 🤛 CATEGORÍA: PUÑOS (NUEVOS INTEGRADOS)
+    { nombre: "Puño Cobra", id: "907300004", categoria: "puños", descripcion: "Efecto de puños de la colección legendaria Cobra Rubí con destellos rojos imponentes." },
+    { nombre: "Puño Evolutivo", id: "907193705", categoria: "puños", descripcion: "Aspecto especial evolutivo con animaciones y partículas de energía avanzadas al golpear." },
+    { nombre: "Puño Booyah", id: "907103031", categoria: "puños", descripcion: "Diseño conmemorativo del evento Booyah Day con efectos dorados y de victoria neón." }
 ];
 
 let categoriaActual = "todos";
@@ -58,7 +43,6 @@ function mostrarCatalogo(lista) {
         const tarjeta = document.createElement("div");
         tarjeta.classList.add("tarjeta");
         
-        // Un solo clic maneja la apertura o el cierre dinámico
         tarjeta.onclick = function(e) {
             if(!e.target.classList.contains('id-texto')) {
                 abrirModal(item);
@@ -90,7 +74,6 @@ function copiarID(idNum) {
 function abrirModal(item) {
     const modal = document.getElementById("infoModal");
 
-    // SI LE DAS CLIC AL MISMO ITEM QUE YA ESTÁ ABIERTO, SE QUITA (SE CIERRA CON ANIMACIÓN)
     if (itemAbiertoActualmente === item.id && modal.classList.contains("visible")) {
         cerrarModal();
         return;
@@ -98,7 +81,6 @@ function abrirModal(item) {
 
     itemAbiertoActualmente = item.id;
 
-    // Inyectar datos en la interfaz
     document.getElementById("modalNombre").innerText = item.nombre;
     document.getElementById("modalImagen").src = `img/${item.imagen}`;
     document.getElementById("modalImagen").onerror = function() { this.src = 'https://via.placeholder.com/150/ff7b00/ffffff?text=FF+Skin'; };
@@ -119,7 +101,6 @@ function abrirModal(item) {
     }
     descParrafo.innerText = item.descripcion ? item.descripcion : "Artículo cosmético de la biblioteca.";
 
-    // Despliegue con transiciones CSS
     modal.style.display = "flex";
     modal.classList.remove("desvanecer");
     setTimeout(() => { modal.classList.add("visible"); }, 10);
@@ -135,7 +116,6 @@ function cerrarModal() {
     }, 300);
 }
 
-// Cerrar si tocan fuera del recuadro
 window.onclick = function(event) {
     const modal = document.getElementById("infoModal");
     if (event.target == modal) { cerrarModal(); }
