@@ -1,6 +1,92 @@
-// --- BASE DE DATOS ACTUALIZADA CON DISEÑO DE TU CAPTURA ---
+// --- BASE DE DATOS ACTUALIZADA CON TUS NUEVOS ITEMS JSON ---
 const baseDeDatosRopa = [
-    // 👀 CATEGORÍA: OJOS / ROSTRO
+    // 👀 CATEGORÍA: AVATARES / ROSTRO (Tu JSON mapeado correctamente)
+    { 
+        nombre: "Avatar Femenino 01", 
+        id: "101000001", 
+        icon_id: "Icon_face_female01_head", 
+        categoria: "ojos", 
+        descripcion: "Nobody knows how she got onto Bermuda, except that she was here before everyone else. Extremely good at adapting to the environment, she is like a chameleon that survives and thrives." 
+    },
+    { 
+        nombre: "Avatar Femenino 2", 
+        id: "101000002", 
+        icon_id: "Icon_face_female_2", 
+        categoria: "ojos", 
+        descripcion: "No Description" 
+    },
+    { 
+        nombre: "Avatar Femenino 3", 
+        id: "101000003", 
+        icon_id: "Icon_face_female_3", 
+        categoria: "ojos", 
+        descripcion: "No Description" 
+    },
+    { 
+        nombre: "Avatar Femenino 01 (Especial)", 
+        id: "101000004", 
+        icon_id: "Icon_face_female01_head", 
+        categoria: "ojos", 
+        descripcion: "No Description" 
+    },
+    { 
+        nombre: "Olivia", 
+        id: "101000005", 
+        icon_id: "Icon_face_female_head_sc_nurse", 
+        categoria: "ojos", 
+        descripcion: "Chief nurse of a renowned hospital." 
+    },
+    { 
+        nombre: "Kelly", 
+        id: "101000006", 
+        icon_id: "Icon_face_female_head_sc_runner", 
+        categoria: "ojos", 
+        descripcion: "Kelly is an athlete, a sprinter." 
+    },
+    { 
+        nombre: "Nikita", 
+        id: "101000007", 
+        icon_id: "Icon_face_female_head_sc_bodyguard", 
+        categoria: "ojos", 
+        descripcion: "Nikita works as a professional bodyguard." 
+    },
+    { 
+        nombre: "Misha", 
+        id: "101000008", 
+        icon_id: "Icon_face_female_head_sc_racergirl", 
+        categoria: "ojos", 
+        descripcion: "Misha is an extremely talented racer." 
+    },
+    { 
+        nombre: "Paloma", 
+        id: "101000009", 
+        icon_id: "Icon_face_female_head_sc_armsdealer", 
+        categoria: "ojos", 
+        descripcion: "Paloma is the reigning arms queen of the underworld." 
+    },
+    { 
+        nombre: "Caroline", 
+        id: "101000010", 
+        icon_id: "Icon_face_female_head_sc_richgirl", 
+        categoria: "ojos", 
+        descripcion: "A schoolgirl from an extremely wealthy family." 
+    },
+    { 
+        nombre: "Moco", 
+        id: "101000011", 
+        icon_id: "Icon_face_female_head_sc_HackerGirl", 
+        categoria: "ojos", 
+        descripcion: "Moco is an outstanding hacker." 
+    },
+    { 
+        nombre: "Laura", 
+        id: "101000012", 
+        icon_id: "Icon_face_female_head_sc_Agent", 
+        categoria: "ojos", 
+        descripcion: "Laura is an outstanding special agent." 
+    },
+
+    // 👀 CATEGORÍA ANTIGUA: OJOS / ROSTRO
     { nombre: "Ojos de Compartir (Estilo Anime)", id: "201001", icon_id: "Icon_avatar_eyes_anime_red", categoria: "ojos", descripcion: "Ojos rojos luminosos." },
     { nombre: "Pintura de Guerra Calavera", id: "201002", icon_id: "Icon_avatar_face_calavera", categoria: "ojos", descripcion: "Pintura facial de esqueleto." },
     { nombre: "Ojos de Demonio Neón", id: "201003", icon_id: "Icon_avatar_eyes_demon_cyan", categoria: "ojos", descripcion: "Efecto de ojos cian brillantes." },
@@ -19,7 +105,7 @@ const baseDeDatosRopa = [
         id: "204000092", 
         icon_id: "Icon_avatar_male_bottom_cos_japanesestyle_purple", 
         categoria: "pantalones", 
-        imagen: "bushido_bottom.png", // Nombre de la imagen real
+        imagen: "bushido_bottom.png", 
         descripcion: "No Description" 
     },
     { nombre: "Pantalones Heroico S2", id: "203000105", icon_id: "Icon_avatar_male_bottom_heroic_s2", categoria: "pantalones", descripcion: "Pantalones exclusivos rango Heroico." },
@@ -81,18 +167,15 @@ function abrirModal(item) {
 
     itemAbiertoActualmente = item.id;
 
-    // Colocar la información real de tu captura en las filas del modal
     document.getElementById("modalNombre").innerText = item.nombre;
     document.getElementById("modalId").innerText = item.id;
     document.getElementById("modalIconId").innerText = item.icon_id;
     document.getElementById("modalDesc").innerText = item.descripcion;
     
-    // Configurar la imagen verdadera
     const imgElement = document.getElementById("modalImagen");
     imgElement.src = `img/${item.imagen || 'placeholder.png'}`;
     imgElement.onerror = function() { this.src = 'https://via.placeholder.com/150/ff7b00/ffffff?text=FF+Skin'; };
     
-    // Configurar el botón de copiar interno
     document.getElementById("btnCopiarModal").onclick = function() { copiarID(item.id); };
 
     modal.style.display = "flex";
