@@ -162,7 +162,7 @@
         }
 
         /* ========================================================
-           🔥 NUEVA VENTANA FLOANTE ESTILO CAPTURA (MODAL INFO)
+           🔥 VENTANA FLOTANTE ESTILO CAPTURA (MODAL INFO)
         =========================================================== */
         .modal {
             display: none;
@@ -180,7 +180,7 @@
         }
         
         .modal-content {
-            background: #0d0d0d; /* Fondo negro puro de la app */
+            background: #0d0d0d;
             border-radius: 24px;
             width: 90%;
             max-width: 360px;
@@ -188,7 +188,7 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
             border: 1px solid #1a1a1a;
             padding: 20px;
-            text-align: left; /* Alineado a la izquierda como tu imagen */
+            text-align: left;
             transform: scale(0.85);
             opacity: 0;
             transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -203,9 +203,8 @@
             opacity: 0;
         }
 
-        /* Contenedor de la foto de la Skin */
         .modal-img-container {
-            background: radial-gradient(circle, #2d113d 0%, #0d0d0d 100%); /* Degradado morado/oscuro de fondo */
+            background: radial-gradient(circle, #2d113d 0%, #0d0d0d 100%);
             border-radius: 16px;
             height: 160px;
             display: flex;
@@ -215,7 +214,6 @@
             position: relative;
             border: 1px solid #222;
         }
-        /* Línea neón inferior de la foto */
         .modal-img-container::after {
             content: '';
             position: absolute;
@@ -232,7 +230,6 @@
             object-fit: contain;
         }
 
-        /* Título del Item */
         .modal-titulo {
             font-family: 'Rajdhani', sans-serif;
             font-size: 20px;
@@ -242,7 +239,6 @@
             margin: 0 0 15px 0;
         }
 
-        /* Filas de Información */
         .info-row {
             border-top: 1px solid #1a1a1a;
             padding: 10px 0;
@@ -252,11 +248,11 @@
             justify-content: space-between;
         }
         .info-label {
-            color: #ff4444; /* Rojo de "Item id :" */
+            color: #ff4444;
             font-weight: 700;
         }
         .info-value {
-            color: #22cc77; /* Verde de los valores numéricos */
+            color: #22cc77;
             font-family: 'monospace';
             font-weight: bold;
         }
@@ -265,7 +261,6 @@
             font-family: 'Rajdhani', sans-serif;
         }
 
-        /* Botón integrado de copiar */
         .btn-copiar-icon {
             background: #1a1a1a;
             border: 1px solid #333;
@@ -278,7 +273,6 @@
         }
         .btn-copiar-icon:hover { color: #fff; background: #2a2a2a; }
 
-        /* Botones de acción inferiores */
         .modal-actions {
             display: flex;
             gap: 10px;
@@ -340,7 +334,7 @@
 
     <div class="filtros-container">
         <button class="btn-filtro activo" onclick="filteredCat('todos', this)">✨ Todos</button>
-        <button class="btn-filtro" onclick="filteredCat('ojos', this)">👀 Ojos</button>
+        <button class="btn-filtro" onclick="filteredCat('ojos', this)">👀 Avatares / Rostro</button>
         <button class="btn-filtro" onclick="filteredCat('mascara', this)">🎭 Máscaras</button>
         <button class="btn-filtro" onclick="filteredCat('chaqueta', this)">👕 Torso</button>
         <button class="btn-filtro" onclick="filteredCat('pantalones', this)">👖 Piernas</button>
@@ -350,6 +344,7 @@
 
     <div class="contenedor" id="listaRopa"></div>
 
+    <!-- VENTANA DE INFORMACIÓN FLOTANTE -->
     <div id="infoModal" class="modal">
         <div class="modal-content">
             
@@ -357,12 +352,12 @@
                 <img id="modalImagen" class="modal-img" src="" alt="">
             </div>
             
-            <div id="modalNombre" class="modal-titulo">Bushido Bottom</div>
+            <div id="modalNombre" class="modal-titulo">Nombre Item</div>
             
             <div class="info-row">
                 <div>
                     <span class="info-label">Item id : </span>
-                    <span id="modalId" class="info-value">204000092</span>
+                    <span id="modalId" class="info-value">00000000</span>
                 </div>
                 <button id="btnCopiarModal" class="btn-copiar-icon">📋 Copiar</button>
             </div>
@@ -370,7 +365,7 @@
             <div class="info-row">
                 <div>
                     <span class="info-label">Icon id : </span>
-                    <span id="modalIconId" class="info-value" style="font-size: 11px; word-break: break-all;">icon_avatar_male...</span>
+                    <span id="modalIconId" class="info-value" style="font-size: 11px; word-break: break-all;">icon_id</span>
                 </div>
             </div>
             
@@ -382,7 +377,7 @@
             </div>
             
             <div class="modal-actions">
-                <button class="btn-share" onclick="alert('¡Compartiendo id!')">Share</button>
+                <button class="btn-share" onclick="alert('¡ID Compartido!')">Share</button>
                 <button class="btn-close" onclick="cerrarModal()">Close</button>
             </div>
             
@@ -393,4 +388,4 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+                        </html>
