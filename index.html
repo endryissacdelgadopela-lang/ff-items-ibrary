@@ -31,19 +31,17 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(255, 123, 0, 0.4), 0 0 30px rgba(255, 123, 0, 0.2);
+            text-shadow: 0 0 15px rgba(255, 123, 0, 0.4);
         }
         p { 
             color: #8fa0ba; 
             margin-top: 0;
             font-size: 15px;
-            font-weight: 500;
-            letter-spacing: 1px;
             margin-bottom: 30px;
             text-transform: uppercase;
         }
         
-        /* --- BUSCADOR PREMIUM --- */
+        /* --- BUSCADOR --- */
         .search-box {
             position: relative;
             max-width: 550px;
@@ -55,23 +53,14 @@
             padding: 15px 25px;
             font-size: 18px;
             font-weight: 600;
-            letter-spacing: 1px;
             border-radius: 12px;
             border: 2px solid #252542;
             background: rgba(15, 15, 26, 0.8);
             color: #fff;
             outline: none;
-            backdrop-filter: blur(5px);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
-        }
-        #buscador:focus { 
-            border-color: #00ffaa; 
-            box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
-            background-color: #121222;
         }
 
-        /* --- BOTONES DE CATEGORÍAS FILTRADOS --- */
+        /* --- FILTROS DE CATEGORÍAS --- */
         .filtros-container {
             display: flex;
             flex-wrap: wrap;
@@ -81,7 +70,6 @@
             margin: 0 auto 35px auto;
             padding: 0 15px;
         }
-        
         @media (max-width: 600px) {
             .filtros-container {
                 flex-wrap: nowrap;
@@ -90,9 +78,7 @@
                 padding-bottom: 10px;
                 scrollbar-width: none;
             }
-            .filtros-container::-webkit-scrollbar {
-                display: none;
-            }
+            .filtros-container::-webkit-scrollbar { display: none; }
         }
 
         .btn-filtro {
@@ -108,21 +94,14 @@
             white-space: nowrap;
             transition: all 0.3s ease;
         }
-        .btn-filtro:hover {
-            color: #fff;
-            border-color: #ff7b00;
-            background: rgba(255, 123, 0, 0.1);
-            transform: translateY(-2px);
-        }
         .btn-filtro.activo {
             background: linear-gradient(135deg, #ff8800 0%, #ff4400 100%);
             color: #fff;
             border: none;
             box-shadow: 0 0 20px rgba(255, 68, 0, 0.5);
-            transform: scale(1.05);
         }
 
-        /* --- CONTENEDOR DE TARJETAS --- */
+        /* --- REJILLA DE TARJETAS --- */
         .contenedor {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -132,7 +111,6 @@
             padding: 10px;
         }
         
-        /* --- TARJETA GAMER --- */
         .tarjeta {
             background: linear-gradient(135deg, rgba(28, 28, 45, 0.8) 0%, rgba(16, 16, 26, 0.9) 100%);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -140,15 +118,12 @@
             padding: 15px;
             text-align: center;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
-            user-select: none;
             cursor: pointer;
+            transition: transform 0.3s ease;
         }
         .tarjeta:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             border-color: #ff7b00;
-            box-shadow: 0 15px 30px rgba(255, 123, 0, 0.25);
         }
         
         .img-wrapper {
@@ -159,32 +134,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: inset 0 4px 8px rgba(0,0,0,0.6);
-            border: 1px solid #1e1e30;
         }
         .tarjeta img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            transition: transform 0.3s ease;
         }
-        .tarjeta:hover img {
-            transform: scale(1.08) rotate(2deg);
-        }
-        
         .tarjeta h3 {
             font-size: 16px;
-            font-weight: 700;
             color: #f0f3f8;
             margin: 15px 0 10px 0;
             height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            line-height: 1.2;
         }
-        
-        /* CONTENEDOR ID CLICKABLE */
         .id-texto {
             font-family: 'Orbitron', monospace;
             font-weight: 700;
@@ -195,16 +159,11 @@
             font-size: 13px;
             display: block;
             border: 1px solid rgba(0, 255, 170, 0.2);
-            cursor: copy;
-            transition: all 0.2s ease;
-        }
-        .id-texto:hover {
-            background: #00ffaa;
-            color: #050507;
-            box-shadow: 0 0 10px rgba(0, 255, 170, 0.4);
         }
 
-        /* --- VENTANA EMERGENTE (MODAL CON ANIMACIÓN) --- */
+        /* ========================================================
+           🔥 NUEVA VENTANA FLOANTE ESTILO CAPTURA (MODAL INFO)
+        =========================================================== */
         .modal {
             display: none;
             position: fixed;
@@ -213,68 +172,150 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0);
-            backdrop-filter: blur(0px);
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease-in-out;
+            transition: all 0.2s ease-in-out;
         }
-        .modal.visible {
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px);
-        }
+        
         .modal-content {
-            background: linear-gradient(135deg, #1c1c30 0%, #0f0f18 100%);
-            border: 2px solid #ff7b00;
-            border-radius: 20px;
-            padding: 30px;
+            background: #0d0d0d; /* Fondo negro puro de la app */
+            border-radius: 24px;
             width: 90%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(255, 123, 0, 0.3);
-            position: relative;
-            transform: scale(0.7);
+            max-width: 360px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            border: 1px solid #1a1a1a;
+            padding: 20px;
+            text-align: left; /* Alineado a la izquierda como tu imagen */
+            transform: scale(0.85);
             opacity: 0;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        
         .modal.visible .modal-content {
             transform: scale(1);
             opacity: 1;
         }
         .modal.desvanecer .modal-content {
-            transform: scale(0.8);
+            transform: scale(0.85);
             opacity: 0;
         }
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 24px;
-            color: #aaa;
-            cursor: pointer;
+
+        /* Contenedor de la foto de la Skin */
+        .modal-img-container {
+            background: radial-gradient(circle, #2d113d 0%, #0d0d0d 100%); /* Degradado morado/oscuro de fondo */
+            border-radius: 16px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid #222;
         }
-        .close-btn:hover { color: #fff; }
+        /* Línea neón inferior de la foto */
+        .modal-img-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 5%;
+            width: 90%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff00ff, #7b00ff);
+            border-radius: 2px;
+        }
         .modal-img {
-            width: 150px;
-            height: 150px;
+            max-width: 85%;
+            max-height: 85%;
             object-fit: contain;
-            background: #09090f;
-            border-radius: 12px;
-            padding: 10px;
-            margin: 15px auto;
-            border: 1px solid #2d2d44;
         }
 
-        /* --- NOTIFICACIÓN FLOTANTE (TOAST) --- */
+        /* Título del Item */
+        .modal-titulo {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            margin: 0 0 15px 0;
+        }
+
+        /* Filas de Información */
+        .info-row {
+            border-top: 1px solid #1a1a1a;
+            padding: 10px 0;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .info-label {
+            color: #ff4444; /* Rojo de "Item id :" */
+            font-weight: 700;
+        }
+        .info-value {
+            color: #22cc77; /* Verde de los valores numéricos */
+            font-family: 'monospace';
+            font-weight: bold;
+        }
+        .info-value.text-desc {
+            color: #22cc77;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        /* Botón integrado de copiar */
+        .btn-copiar-icon {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #888;
+            padding: 4px 6px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            margin-left: 8px;
+        }
+        .btn-copiar-icon:hover { color: #fff; background: #2a2a2a; }
+
+        /* Botones de acción inferiores */
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .btn-share {
+            background: #1a1a1a;
+            color: #ffffff;
+            border: 1px solid #2a2a2a;
+            border-radius: 20px;
+            padding: 10px;
+            flex: 1;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .btn-close {
+            background: #141414;
+            color: #ffffff;
+            border: 1px solid #2a2a2a;
+            border-radius: 20px;
+            padding: 10px;
+            flex: 2;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* --- TOAST NOTIFICACIÓN --- */
         .toast {
             visibility: hidden;
-            min-width: 200px;
             background-color: #00ffaa;
             color: #000;
             font-weight: bold;
             text-align: center;
             border-radius: 30px;
-            padding: 12px;
+            padding: 12px 25px;
             position: fixed;
             z-index: 1000;
             left: 50%;
@@ -283,10 +324,7 @@
             font-family: 'Orbitron', sans-serif;
             box-shadow: 0 4px 15px rgba(0,255,170,0.4);
         }
-        .toast.show {
-            visibility: visible;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        }
+        .toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
         @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
         @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
     </style>
@@ -294,38 +332,63 @@
 <body>
 
     <h1>⚡ BIBLIOTECA DE IDs ⚡</h1>
-    <p>Un toque para INFO • Clic en ID para COPIAR • Clic de nuevo para quitar info</p>
+    <p>Toca una skin para abrir el Visor • Vuelve a tocar para cerrarlo</p>
     
     <div class="search-box">
         <input type="text" id="buscador" placeholder="BUSCAR POR NOMBRE...">
     </div>
 
-    <!-- Solo quedan las categorías de tus ítems reales -->
     <div class="filtros-container">
         <button class="btn-filtro activo" onclick="filteredCat('todos', this)">✨ Todos</button>
         <button class="btn-filtro" onclick="filteredCat('ojos', this)">👀 Ojos</button>
         <button class="btn-filtro" onclick="filteredCat('mascara', this)">🎭 Máscaras</button>
         <button class="btn-filtro" onclick="filteredCat('chaqueta', this)">👕 Torso</button>
         <button class="btn-filtro" onclick="filteredCat('pantalones', this)">👖 Piernas</button>
-        <button class="btn-filtro" onclick="filteredCat('dino', this)">🦖 Dinos</button>
+        <button class="btn-filtro" onclick="filteredCat('dino', this)">Rex Dinos</button>
         <button class="btn-filtro" onclick="filteredCat('puños', this)">🤛 Puños</button>
     </div>
 
     <div class="contenedor" id="listaRopa"></div>
 
-    <!-- Modal Emergente -->
     <div id="infoModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="cerrarModal()">&times;</span>
-            <h2 id="modalNombre" style="color:#ff7b00; margin-top:10px;"></h2>
-            <img id="modalImagen" class="modal-img" src="" alt="">
-            <p style="color:#aaa; font-size:14px; margin-bottom:10px;">Categoría: <span id="modalCategoria" style="color:#fff;"></span></p>
-            <div id="modalId" class="id-texto" style="display:inline-block; width:80%;"></div>
-            <p style="font-size:11px; color:#666; margin-top:15px;">¡Toca el ID verde para copiarlo!</p>
+            
+            <div class="modal-img-container">
+                <img id="modalImagen" class="modal-img" src="" alt="">
+            </div>
+            
+            <div id="modalNombre" class="modal-titulo">Bushido Bottom</div>
+            
+            <div class="info-row">
+                <div>
+                    <span class="info-label">Item id : </span>
+                    <span id="modalId" class="info-value">204000092</span>
+                </div>
+                <button id="btnCopiarModal" class="btn-copiar-icon">📋 Copiar</button>
+            </div>
+            
+            <div class="info-row">
+                <div>
+                    <span class="info-label">Icon id : </span>
+                    <span id="modalIconId" class="info-value" style="font-size: 11px; word-break: break-all;">icon_avatar_male...</span>
+                </div>
+            </div>
+            
+            <div class="info-row" style="border-bottom: 1px solid #1a1a1a;">
+                <div>
+                    <span class="info-label">Description : </span>
+                    <span id="modalDesc" class="info-value text-desc">No Description</span>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="btn-share" onclick="alert('¡Compartiendo id!')">Share</button>
+                <button class="btn-close" onclick="cerrarModal()">Close</button>
+            </div>
+            
         </div>
     </div>
 
-    <!-- Alerta Flotante -->
     <div id="toastNotification" class="toast">📋 ¡ID COPIADO!</div>
 
     <script src="script.js"></script>
