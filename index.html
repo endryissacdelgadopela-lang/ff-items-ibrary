@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>⚡ Biblioteca de IDs - Free Fire</title>
-    <!-- Fuentes estilo Gaming / Esports -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
@@ -72,7 +71,7 @@
             background-color: #121222;
         }
 
-        /* --- BOTONES DE CATEGORÍAS --- */
+        /* --- BOTONES DE CATEGORÍAS FILTRADOS --- */
         .filtros-container {
             display: flex;
             flex-wrap: wrap;
@@ -301,17 +300,14 @@
         <input type="text" id="buscador" placeholder="BUSCAR POR NOMBRE...">
     </div>
 
+    <!-- Solo quedan las categorías de tus ítems reales -->
     <div class="filtros-container">
         <button class="btn-filtro activo" onclick="filteredCat('todos', this)">✨ Todos</button>
-        <button class="btn-filtro" onclick="filteredCat('cabeza', this)">🧑 Cabeza</button>
-        <button class="btn-filtro" onclick="filteredCat('ojos', this)">👀 Ojos / Rostro</button>
+        <button class="btn-filtro" onclick="filteredCat('ojos', this)">👀 Ojos</button>
         <button class="btn-filtro" onclick="filteredCat('mascara', this)">🎭 Máscaras</button>
         <button class="btn-filtro" onclick="filteredCat('chaqueta', this)">👕 Torso</button>
         <button class="btn-filtro" onclick="filteredCat('pantalones', this)">👖 Piernas</button>
-        <button class="btn-filtro" onclick="filteredCat('criminales', this)">🤡 Criminales</button>
-        <button class="btn-filtro" onclick="filteredCat('dino', this)">Rex Dinos</button>
-        <button class="btn-filtro" onclick="filteredCat('completo', this)">🥋 Sets</button>
-        <button class="btn-filtro" onclick="filteredCat('armas', this)">🔫 Armas</button>
+        <button class="btn-filtro" onclick="filteredCat('dino', this)">🦖 Dinos</button>
         <button class="btn-filtro" onclick="filteredCat('puños', this)">🤛 Puños</button>
     </div>
 
