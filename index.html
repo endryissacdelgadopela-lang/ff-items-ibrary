@@ -3,67 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de IDs - Free Fire</title>
+    <title>⚡ Biblioteca de IDs - Free Fire</title>
+    <!-- Fuentes estilo Gaming / Esports -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- CONFIGURACIÓN GENERAL --- */
+        * {
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
+            background: radial-gradient(circle at 50% 0%, #1c1c3a 0%, #0a0a0f 70%, #050507 100%);
             color: #ffffff;
             text-align: center;
             margin: 0;
             padding: 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        h1 { color: #ffbc00; }
+
+        h1 { 
+            font-family: 'Orbitron', sans-serif;
+            color: #ff7b00; 
+            margin-bottom: 5px;
+            font-size: 32px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(255, 123, 0, 0.4), 0 0 30px rgba(255, 123, 0, 0.2);
+        }
+        p { 
+            color: #8fa0ba; 
+            margin-top: 0;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        
+        /* --- BUSCADOR PREMIUM --- */
+        .search-box {
+            position: relative;
+            max-width: 550px;
+            margin: 0 auto 25px auto;
+            width: 90%;
+        }
         #buscador {
-            width: 80%;
-            max-width: 400px;
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: none;
-            margin-bottom: 20px;
+            width: 100%;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 12px;
+            border: 2px solid #252542;
+            background: rgba(15, 15, 26, 0.8);
+            color: #fff;
+            outline: none;
+            backdrop-filter: blur(5px);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
         }
-        .contenedor {
+        #buscador:focus { 
+            border-color: #00ffaa; 
+            box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
+            background-color: #121222;
+        }
+
+        /* --- BOTONES DE CATEGORÍAS --- */
+        .filtros-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto 35px auto;
+            padding: 0 15px;
         }
+        
+        @media (max-width: 600px) {
+            .filtros-container {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+                scrollbar-width: none;
+            }
+            .filtros-container::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .btn-filtro {
+            background: rgba(30, 30, 48, 0.5);
+            color: #92a2b8;
+            border: 1px solid #323254;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        .btn-filtro:hover {
+            color: #fff;
+            border-color: #ff7b00;
+            background: rgba(255, 123, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        .btn-filtro.activo {
+            background: linear-gradient(135deg, #ff8800 0%, #ff4400 100%);
+            color: #fff;
+            border: none;
+            box-shadow: 0 0 20px rgba(255, 68, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* --- CONTENEDOR DE TARJETAS --- */
+        .contenedor {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        /* --- TARJETA GAMER --- */
         .tarjeta {
-            background-color: #1e1e1e;
-            border: 2px solid #333;
-            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(28, 28, 45, 0.8) 0%, rgba(16, 16, 26, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
             padding: 15px;
-            width: 150px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
+            user-select: none;
+            cursor: pointer;
+        }
+        .tarjeta:hover {
+            transform: translateY(-8px);
+            border-color: #ff7b00;
+            box-shadow: 0 15px 30px rgba(255, 123, 0, 0.25);
+        }
+        
+        .img-wrapper {
+            background: #09090f;
+            border-radius: 12px;
+            padding: 8px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.6);
+            border: 1px solid #1e1e30;
         }
         .tarjeta img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 5px;
-            background-color: #333;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
         }
+        .tarjeta:hover img {
+            transform: scale(1.08) rotate(2deg);
+        }
+        
+        .tarjeta h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #f0f3f8;
+            margin: 15px 0 10px 0;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+        }
+        
+        /* CONTENEDOR ID CLICKABLE */
         .id-texto {
-            font-weight: bold;
-            color: #00ffcc;
-            background: #111;
-            padding: 5px;
-            border-radius: 3px;
-            display: inline-block;
-            margin-top: 5px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            color: #00ffaa;
+            background: rgba(0, 255, 170, 0.05);
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            display: block;
+            border: 1px solid rgba(0, 255, 170, 0.2);
+            cursor: copy;
+            transition: all 0.2s ease;
         }
+        .id-texto:hover {
+            background: #00ffaa;
+            color: #050507;
+            box-shadow: 0 0 10px rgba(0, 255, 170, 0.4);
+        }
+
+        /* --- VENTANA EMERGENTE (MODAL CON ANIMACIÓN) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0);
+            backdrop-filter: blur(0px);
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease-in-out;
+        }
+        .modal.visible {
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: linear-gradient(135deg, #1c1c30 0%, #0f0f18 100%);
+            border: 2px solid #ff7b00;
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 123, 0, 0.3);
+            position: relative;
+            transform: scale(0.7);
+            opacity: 0;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+        }
+        .modal.visible .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .modal.desvanecer .modal-content {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: #aaa;
+            cursor: pointer;
+        }
+        .close-btn:hover { color: #fff; }
+        .modal-img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            background: #09090f;
+            border-radius: 12px;
+            padding: 10px;
+            margin: 15px auto;
+            border: 1px solid #2d2d44;
+        }
+
+        /* --- NOTIFICACIÓN FLOTANTE (TOAST) --- */
+        .toast {
+            visibility: hidden;
+            min-width: 200px;
+            background-color: #00ffaa;
+            color: #000;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 30px;
+            padding: 12px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 4px 15px rgba(0,255,170,0.4);
+        }
+        .toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+        @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
     </style>
 </head>
 <body>
 
-    <h1>📚 Biblioteca de IDs de Ropa</h1>
-    <p>Busca tus skins y copia sus identificadores</p>
+    <h1>⚡ BIBLIOTECA DE IDs ⚡</h1>
+    <p>Un toque para INFO • Clic en ID para COPIAR • Clic de nuevo para quitar info</p>
     
-    <input type="text" id="buscador" placeholder="Buscar ropa por nombre..." onkeyup="filtrarRopa()">
+    <div class="search-box">
+        <input type="text" id="buscador" placeholder="BUSCAR POR NOMBRE...">
+    </div>
+
+    <div class="filtros-container">
+        <button class="btn-filtro activo" onclick="filteredCat('todos', this)">✨ Todos</button>
+        <button class="btn-filtro" onclick="filteredCat('cabeza', this)">🧑 Cabeza</button>
+        <button class="btn-filtro" onclick="filteredCat('ojos', this)">👀 Ojos / Rostro</button>
+        <button class="btn-filtro" onclick="filteredCat('mascara', this)">🎭 Máscaras</button>
+        <button class="btn-filtro" onclick="filteredCat('chaqueta', this)">👕 Torso</button>
+        <button class="btn-filtro" onclick="filteredCat('pantalones', this)">👖 Piernas</button>
+        <button class="btn-filtro" onclick="filteredCat('criminales', this)">🤡 Criminales</button>
+        <button class="btn-filtro" onclick="filteredCat('dino', this)">Rex Dinos</button>
+        <button class="btn-filtro" onclick="filteredCat('completo', this)">🥋 Sets</button>
+        <button class="btn-filtro" onclick="filteredCat('armas', this)">🔫 Armas</button>
+        <button class="btn-filtro" onclick="filteredCat('puños', this)">🤛 Puños</button>
+    </div>
 
     <div class="contenedor" id="listaRopa"></div>
+
+    <!-- Modal Emergente -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="cerrarModal()">&times;</span>
+            <h2 id="modalNombre" style="color:#ff7b00; margin-top:10px;"></h2>
+            <img id="modalImagen" class="modal-img" src="" alt="">
+            <p style="color:#aaa; font-size:14px; margin-bottom:10px;">Categoría: <span id="modalCategoria" style="color:#fff;"></span></p>
+            <div id="modalId" class="id-texto" style="display:inline-block; width:80%;"></div>
+            <p style="font-size:11px; color:#666; margin-top:15px;">¡Toca el ID verde para copiarlo!</p>
+        </div>
+    </div>
+
+    <!-- Alerta Flotante -->
+    <div id="toastNotification" class="toast">📋 ¡ID COPIADO!</div>
 
     <script src="script.js"></script>
 </body>
